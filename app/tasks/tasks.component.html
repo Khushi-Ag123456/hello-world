@@ -1,0 +1,22 @@
+<div class = "row">
+    <div class = "col-md-4">
+        <div class = "inputfield pb-2"> <input type = "text" placeholder="Task Title"></div>
+        <div class = "inputfield pb-2" ><textarea placeholder="task description"></textarea></div>
+        <div class = "inputfield pb-2">Status : 
+            <select id = "selectStatus">
+                <option *ngFor = "let status of taskStatus" [value] = "status">
+                    {{status}}
+                </option>
+            </select>
+        </div>
+        <div class = "inputfield pb-2"><input type="date" placeholder="creation date"></div>
+        <div class = "inputfield pb-2"><input type="date" placeholder="completion date"></div>
+        <div class = "inputfield pb-2">Priority : 
+            <select>
+                <option *ngFor = "let priority of priorities" [value] = "priority">
+                        {{priority}}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-tasks',
@@ -12,6 +13,5 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
   }
 
-  priorities = ["High", "Medium", "Low"];
-  taskStatus = ["New", "In Progress", "Completed"];
+  
 }

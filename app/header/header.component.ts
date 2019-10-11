@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
+import { Task } from '../task';
+
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  taskArr: Task[] = [];
   constructor(private router : Router, ) { }
 
   ngOnInit() {
@@ -16,11 +19,8 @@ export class HeaderComponent implements OnInit {
   priorities = ["High", "Medium", "Low"];
   taskStatus = ["New", "In Progress", "Completed"];
   
-process() {
- alert("Hiii");
-}
-
-createNewTask() {
-  this.router.navigate(['/tasks-cmp'])
-}
+  onClickSubmit(data) {
+     this.taskArr.push(data);
+     alert(this.taskArr.length);
+ }
 }

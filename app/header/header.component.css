@@ -1,11 +1,42 @@
-.new .card-body {
+.card-main{
     background-color: lightblue;
+    height: 500px;
 }
 
-.inProgress .card-body {
-    background-color: pink;
+.displayHead{
+    text-align: center;
+    font-size: 25px;
+    color: teal;
+    font-weight: bold;
 }
 
-.completed .card-body {
-    background-color: lightseagreen;
+.high{
+    background-color: rgb(247, 158, 158);
 }
+
+.medium{
+    background-color: rgb(255, 225, 169);
+}
+
+.low{
+    background-color: rgb(200, 248, 200);
+}
+
+
+
+.heading{
+    color: rgb(44, 214, 214);
+    float: left;
+}
+
+header{
+    overflow: auto;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    border-width: 100%;
+}
+
+.bg-grey{
+    background-color: lightgray;
+}
+

@@ -28,4 +28,8 @@ export class HeaderComponent implements OnInit {
  deleteTask(taskId) {
    this.taskArr = this.taskArr.filter(task => task.taskId !== taskId);
  }
+
+ editTasks(taskId) {
+
+ }
 }

@@ -11,6 +11,7 @@ import { Task } from '../task';
 export class HeaderComponent implements OnInit {
 
   taskArr: Task[] = [];
+  taskid : number = 1;
   constructor(private router : Router, ) { }
 
   ngOnInit() {
@@ -20,6 +21,11 @@ export class HeaderComponent implements OnInit {
   taskStatus = ["New", "In Progress", "Completed"];
   
   onClickSubmit(data) {
+    data.taskId = this.taskid++;
      this.taskArr.push(data);
+ }
+
+ deleteTask(taskId) {
+   this.taskArr = this.taskArr.filter(task => task.taskId !== taskId);
  }
 }

@@ -1,0 +1,11 @@
+.new .card-body {
+    background-color: lightblue;
+}
+
+.inProgress .card-body {
+    background-color: pink;
+}
+
+.completed .card-body {
+    background-color: lightseagreen;
+}

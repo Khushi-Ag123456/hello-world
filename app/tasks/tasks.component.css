@@ -1,0 +1,13 @@
+.inputfield input{
+    border : none;
+    background-color: lightgrey;
+}
+
+.inputfield textarea{
+    border : none;
+    background-color: lightgrey;
+}
+.inputfield select{
+    border : none;
+    background-color: lightgrey;
+}

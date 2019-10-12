@@ -1,0 +1,115 @@
+<div class = "row mt-4 border-bottom">
+        <div class = "col-md-6">
+            <p class = "text-primary">My Task Tracker</p>
+        </div>
+        <div class = "col-md-6 text-right pb-3">
+                <button type="button" class="btn btn-outline-primary text-dark"  data-toggle="modal" data-target="#exampleModal">New Task</button>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">New Task</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <form #taskcreation = "ngForm" (ngSubmit) = "onClickSubmit(taskcreation.value)">
+                        <div class="form-group"  >
+                          <label for="task-title" class="col-form-label">Task Title:</label>
+                          <input type="text" class="form-control" name="taskTitle"  ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-desc" class="col-form-label">Task Description:</label>
+                            <textarea class="form-control" name="taskDesc"  ngModel></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-form-label">Status:</label>
+                            <select class="form-control" name = "status" ngModel>
+                                <option *ngFor = "let status1 of taskStatus" [value] = "status1" >
+                                    {{status1}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="creation-date" class="col-form-label">Creation Date:</label>
+                            <input type="Date" class="form-control" name="creationDate"  ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="completion-date" class="col-form-label">Completion Date:</label>
+                            <input type="Date" class="form-control" name="completionDate"  ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="priority" class="col-form-label">Priority:</label>
+                            <select class="form-control" name="priority" ngModel>
+                                <option *ngFor = "let priority1 of priorities" [value] = "priority1">
+                                    {{priority1}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Create New Task</button>
+                        </div>
+                      </form>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+    </div>
+
+    <div class = "row taskDetails">
+        <div *ngFor =  "let task of taskArr" class = "taskCards mr-3 mb-3">
+          <div class="card new" style="width: 18rem;" *ngIf = "task.status == 'New'">
+            <div class = "card-header">
+              <h5>{{task.status}}</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center border-bottom pb-3">{{task.taskTitle}}</h5>
+              <p>{{task.creationDate}}</p>
+              <p>{{task.completionDate}}</p>
+              <p class="card-text">{{task.taskDesc}}</p>
+              <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal">Edit</button>
+              <button type="button" class="btn btn-primary mr-3">Delete</button>
+            </div>
+          </div>
+        </div>
+   
+
+   
+        <div *ngFor =  "let task of taskArr" class = "taskCards mr-3  mb-3">
+          <div class="card inProgress" style="width: 18rem;" *ngIf = "task.status == 'In Progress'">
+            <div class = "card-header">
+              <h5>{{task.status}}</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center border-bottom pb-3" >{{task.taskTitle}}</h5>
+              <p>{{task.creationDate}}</p>
+              <p>{{task.completionDate}}</p>
+              <p class="card-text">{{task.taskDesc}}</p>
+              <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal">Edit</button>
+              <button type="button" class="btn btn-primary mr-3">Delete</button>
+            </div>
+          </div>
+        </div>
+    
+
+    
+        <div *ngFor =  "let task of taskArr" class = "taskCards mr-3  mb-3">
+          <div class="card completed" style="width: 18rem;" *ngIf = "task.status == 'Completed'">
+            <div class = "card-header">
+              <h5>{{task.status}}</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center border-bottom pb-3">{{task.taskTitle}}</h5>
+              <p>{{task.creationDate}}</p>
+              <p>{{task.completionDate}}</p>
+              <p class="card-text">{{task.taskDesc}}</p>
+              <button type="button" class="btn btn-primary mr-3">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    

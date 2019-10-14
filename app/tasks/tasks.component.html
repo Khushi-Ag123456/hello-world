@@ -1,28 +1,49 @@
-<!--<div class = "row">
-    <div class = "col-md-4">
-        <div class = "inputfield pb-2"> <input type = "text" placeholder="Task Title"></div>
-        <div class = "inputfield pb-2" ><textarea placeholder="task description"></textarea></div>
-        <div class = "inputfield pb-2">Status : 
-            <select id = "selectStatus">
-                <option *ngFor = "let status of taskStatus" [value] = "status">
-                    {{status}}
-                </option>
-            </select>
-        </div>
-        <div class = "inputfield pb-2"><input type="date" placeholder="creation date"></div>
-        <div class = "inputfield pb-2"><input type="date" placeholder="completion date"></div>
-        <div class = "inputfield pb-2">Priority : 
-            <select>
-                <option *ngFor = "let priority of priorities" [value] = "priority">
-                        {{priority}}
-                </option>
-            </select>
+<div class="row justify-content-around mt-4">
+    <div class="col-3 card card-main">
+        <div class="displayHead mb-3">New</div>
+        <div *ngFor="let task of taskArr">
+            <div class="card mt-2" *ngIf="task.status=='New'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                <span class="float-left pl-2">
+                    <b>{{task.taskTitle}}</b><br>
+                    <small>{{task.taskDesc}}</small><br>
+                    <small>{{task.priority}}</small>
+                </span>
+                <span class="float-right pr-2 pb-1">
+                    <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal" (click)="editTask(task)" ><i class="fa fa-pencil-square-o"></i></button>
+                    <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(this.task.taskId)"><i class="fa fa-trash"></i></button>
+                </span>
+            </div>
         </div>
     </div>
-</div>   
--->
-
-<div class = "row">
-    <div *ngFor =  "let task of taskArr">
-        <p>{{task.taskTitle}}</p>
+    <div class="col-3 card card-main">
+        <div class="displayHead mb-3">In Progress</div>
+        <div *ngFor="let task of taskArr">
+            <div class="card mt-2" *ngIf="task.status=='In Progress'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                <span class="float-left pl-2">
+                    <b>{{task.taskTitle}}</b><br>
+                    <small>{{task.taskDesc}}</small><br>
+                    <small>{{task.priority}}</small>
+                </span>
+                <span class="float-right pr-2 pb-1">
+                    <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal" (click)="editTask(task)" ><i class="fa fa-pencil-square-o"></i></button>
+                    <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(task.taskId)"><i class="fa fa-trash"></i></button>
+                </span>
+            </div>
+        </div> 
     </div>
+    <div class="col-3 card card-main">
+        <div class="displayHead mb-3">Completed</div>
+        <div *ngFor="let task of taskArr">
+            <div class="card mt-2" *ngIf="task.status=='Completed'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                <span class="float-left pl-2">
+                    <b>{{task.taskTitle}}</b><br>
+                    <small>{{task.taskDesc}}</small><br>
+                    <small>{{task.priority}}</small>
+                </span>
+                <span class="float-right pr-2 pb-1">
+                    <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(task.taskId)"><i class="fa fa-trash"></i></button>
+                </span>
+            </div>
+        </div>     
+    </div>
+</div>

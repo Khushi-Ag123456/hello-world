@@ -10,16 +10,12 @@ import { Task } from '../task';
 })
 export class HeaderComponent implements OnInit {
 
-  taskArr: Task[] = [];
+ 
   constructor(private router : Router, ) { }
 
   ngOnInit() {
   }
 
-  priorities = ["High", "Medium", "Low"];
-  taskStatus = ["New", "In Progress", "Completed"];
   
-  onClickSubmit(data) {
-     this.taskArr.push(data);
- }
+  
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-tasks',
@@ -8,10 +8,20 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class TasksComponent implements OnInit {
 
+  @Input() taskArr : Task[];
+  @Output() editTaskEmitterCallBack = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
-  
+  deleteTask(taskId) {
+    this.taskArr = this.taskArr.filter(task => task.taskId !== taskId);
+  }
+ 
+  editTask(task) {
+    
+    this.editTaskEmitterCallBack.emit(task);
+  }
+
 }

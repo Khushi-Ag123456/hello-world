@@ -1,13 +1,43 @@
-.inputfield input{
-    border : none;
-    background-color: lightgrey;
+.card-main{
+    background-color: lightblue;
+    height: 500px;
+    overflow-y: scroll;
 }
 
-.inputfield textarea{
-    border : none;
-    background-color: lightgrey;
+.displayHead{
+    text-align: center;
+    font-size: 25px;
+    color: teal;
+    font-weight: bold;
 }
-.inputfield select{
-    border : none;
-    background-color: lightgrey;
+
+.high{
+    background-color: rgb(247, 158, 158);
 }
+
+.medium{
+    background-color: rgb(255, 225, 169);
+}
+
+.low{
+    background-color: rgb(200, 248, 200);
+}
+
+
+
+.heading{
+    color: rgb(44, 214, 214);
+    float: left;
+}
+
+header{
+    overflow: auto;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    border-width: 100%;
+}
+
+.bg-grey{
+    background-color: lightgray;
+}
+

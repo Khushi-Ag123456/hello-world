@@ -1,28 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule} from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
+import { TaskComponent } from './task/task.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksComponent,
-    HeaderComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {
-         path: 'tasks-cmp',
-         component: TasksComponent
-      }
-   ]),
-   FormsModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

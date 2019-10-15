@@ -1,0 +1,114 @@
+<div class = "row mt-4 border-bottom">
+    <div class = "col-md-6">
+        <p class = "text-primary">My Task Tracker</p>
+    </div>
+    <div class = "col-md-6 text-right pb-3">
+            <button type="button" class="btn btn-outline-primary text-dark"  data-toggle="modal" data-target="#exampleModal">New Task</button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id = "taskForm" #taskForm = "ngForm" (ngSubmit) = "onSubmit(taskForm.value)">
+              <!-- <div class = "form-group">
+                <input type="number" class="form-control" name="taskId"  ngModel= "taskId" hidden>
+              </div> -->
+              <div class="form-group"  >
+                <label for="task-title" class="col-form-label">Task Title:</label>
+                <input type="text" class="form-control"  [(ngModel)] = "taskArr.taskTitle"  #taskTitle = "ngModel" name = "taskTitle" >
+              </div>
+              <div class="form-group">
+                <label for="task-desc" class="col-form-label">Task Description:</label>
+                <textarea class="form-control"  [(ngModel)]="taskArr.taskDesc" #taskDesc = "ngModel" name = "taskDesc"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="status" class="col-form-label">Status:</label>
+                <select class="form-control"   #status = "ngModel" [(ngModel)] = "taskArr.status" name =  "status">
+                  <option *ngFor = "let status1 of taskStatus" [value] = "status1" >
+                    {{status1}}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="creation-date" class="col-form-label">Creation Date:</label>
+                <input type="Date" class="form-control" #creationDate="ngModel"  [(ngModel)]="taskArr.creationDate" name = "creationDate" >
+              </div>
+              <div class="form-group">
+                <label for="completion-date" class="col-form-label">Completion Date:</label>
+                <input type="Date" class="form-control"  #completionDate = "ngModel" [(ngModel)] = "taskArr.completionDate" name = "completionDate" >
+              </div>
+              <div class="form-group">
+                <label for="priority" class="col-form-label">Priority:</label>
+                <select class="form-control"   #priority = "ngModel" [(ngModel)] = "taskArr.priority" name = "priority" >
+                  <option *ngFor = "let priority1 of priorities" [value] = "priority1">
+                    {{priority1}}
+                  </option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-around mt-4">
+      <div class="col-3 card card-main">
+          <div class="displayHead mb-3">New</div>
+          <div *ngFor="let task of taskArr">
+              <div class="card mt-2" *ngIf="task.status=='New'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                  <span class="float-left pl-2">
+                      <b>{{task.taskTitle}}</b><br>
+                      <small>{{task.taskDesc}}</small><br>
+                      <small>{{task.priority}}</small>
+                  </span>
+                  <span class="float-right pr-2 pb-1">
+                      <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal" (click)="editTask(task)" ><i class="fa fa-pencil-square-o"></i></button>
+                      <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(task.taskId)"><i class="fa fa-trash"></i></button>
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="col-3 card card-main">
+          <div class="displayHead mb-3">In Progress</div>
+          <div *ngFor="let task of taskArr">
+              <div class="card mt-2" *ngIf="task.status=='In Progress'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                  <span class="float-left pl-2">
+                      <b>{{task.taskTitle}}</b><br>
+                      <small>{{task.taskDesc}}</small><br>
+                      <small>{{task.priority}}</small>
+                  </span>
+                  <span class="float-right pr-2 pb-1">
+                      <button type="button" class="btn btn-primary mr-3"  data-toggle="modal" data-target="#exampleModal" (click)="editTask(task.taskId)" ><i class="fa fa-pencil-square-o"></i></button>
+                      <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(task.taskId)"><i class="fa fa-trash"></i></button>
+                  </span>
+              </div>
+          </div> 
+      </div>
+      <div class="col-3 card card-main">
+          <div class="displayHead mb-3">Completed</div>
+          <div *ngFor="let task of taskArr">
+              <div class="card mt-2" *ngIf="task.status=='Completed'" [ngClass]="{'high' : task.priority == 'High','medium' : task.priority == 'Medium', 'low' : task.priority == 'Low'}">
+                  <span class="float-left pl-2">
+                      <b>{{task.taskTitle}}</b><br>
+                      <small>{{task.taskDesc}}</small><br>
+                      <small>{{task.priority}}</small>
+                  </span>
+                  <span class="float-right pr-2 pb-1">
+                      <button type="button" class="btn btn-primary mr-3" (click) = "deleteTask(task.taskId)"><i class="fa fa-trash"></i></button>
+                  </span>
+              </div>
+          </div>     
+      </div>
+  </div>
+  

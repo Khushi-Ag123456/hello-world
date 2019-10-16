@@ -1,0 +1,34 @@
+<div  id="newTask" class="taskDetail ">
+        <span>
+            <label>Task Name:</label>
+            <p >{{tempTask.taskName}}</p>
+        </span>
+        <span>
+            <label>Task Description:</label>
+            <p>{{tempTask.taskDescription}}</p>
+        </span>
+        <span>
+    
+    
+            <label>Task Priority:</label>
+            <p>{{tempTask.taskPriority}}</p>
+        </span>
+        <span>
+    
+    
+            <label>Task status:</label>
+            <p>{{tempTask.status}}</p>
+        </span>
+        <span>
+            <label>Task Creation Date:</label>
+            <p>{{cd}}</p>
+        </span>
+        <span>
+            <label>Task Completion Date:</label>
+            <p>{{compD}}</p>
+        </span>
+        <button [routerLink]="['/edit-task/',tempTask.creationDate]" class="btn  btn-primary mr-1">Edit</button>
+        <button class="btn btn-danger" type="submit" (click)="deleteTask()">Delete</button>
+    </div>
+    
+   

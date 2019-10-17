@@ -1,6 +1,6 @@
 
    [
-    {
+     {
       "id": 1,
       "title": "Spinach",
       "price": 2.5,
@@ -36,3 +36,4 @@
       "category": "Dairy"
     }
   ]
+   

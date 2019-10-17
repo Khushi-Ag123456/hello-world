@@ -1,2 +1,22 @@
-<div class = "container">
-    </div>
+
+        <ul class="nav nav-pills flex-column border rounded m-4">
+                <li class="nav-item border-bottom">
+                  <a (click) = "goToHome()" [routerLink]="['/all-items/','All']" class="nav-link" >All Categories </a>
+                </li>
+                <li class="nav-item border-bottom">
+                        <a (click) = "goToHome()" [routerLink]="['/all-items/', 'Bread']" class="nav-link " routerLinkActive="active">Bread</a>
+                </li>
+                <li class="nav-item border-bottom">
+                        <a (click) = "goToHome()" [routerLink]="['/all-items/', 'Dairy']" class="nav-link " routerLinkActive="active">Dairy</a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a (click) = "goToHome()" [routerLink]="['/all-items/', 'Fruits']" class="nav-link" routerLinkActive="active" >Fruits</a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a (click) = "goToHome()" class="nav-link" [routerLink]="['/all-items/', 'Seasoning and Spices']" routerLinkActive="active" >Seasoning & spices</a>
+                </li>
+                <li class="nav-item">
+                    <a (click) = "goToHome()" class="nav-link" [routerLink]="['/all-items/', 'Vegetables']" routerLinkActive="active">Vegetables</a>
+                </li>
+            </ul>
+    

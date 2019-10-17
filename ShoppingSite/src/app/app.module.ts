@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { NavSideBarComponent } from './nav-side-bar/nav-side-bar.component';
 import { AllItemsComponent } from './all-items/all-items.component';
+import { RouterModule, Routes } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { AllItemsComponent } from './all-items/all-items.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

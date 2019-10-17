@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from './item';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +9,34 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class ShoppingService {
 
   constructor(private httpClient : HttpClient) {
-    this.httpClient.get('./assets/app.json').subscribe(
-      data => {
-        this.itemsArr.push(data.toString());
-        console.log(this.itemsArr[1]);
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      }
-    );
+   this.httpClient.get<Item[]>('./assets/app.json').subscribe(data => {
+     data.forEach(item => {
+       this.itemsArr.push(item);
+     })
+   })
 }
 
-  private JsonUrl =  '__appData/app.json';
-
-  itemsArr : string[] = [];
+  itemsArr : Item[] = [];
 
   getAllItems(){
     return this.itemsArr;
   }
+
+  postData = {
+    "id": 6,
+    "title": "Freshly Baked Bread",
+    "price": 3.5,
+    "imageUrl": "img/bread.jpg",
+    "category": "Bread"
+  };
+  addToCart(itemId) {
+    
+    this.httpClient.post('http://localhost:4200/assets/app.json', this.postData, {
+      headers : new HttpHeaders({
+        'Content-Type' : 'application/json'
+      })
+    })
+  }
 }
+
+

@@ -17,6 +17,7 @@ export class ShoppingService {
 }
 
   itemsArr : Item[] = [];
+  cart :  any[];
 
   getAllItems(){
     return this.itemsArr;
@@ -31,11 +32,15 @@ export class ShoppingService {
   };
   addToCart(itemId) {
     
-    this.httpClient.post('http://localhost:4200/assets/app.json', this.postData, {
-      headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
-      })
-    })
+    // console.log(this.httpClient.post('http://localhost:4200/assets/app.json', this.postData, {
+    //   headers : new HttpHeaders({
+    //     'Content-Type' : 'application/json'
+    //   })
+    // }));
+    // this.httpClient.post("http://localhost:4200/assets/app.json", this.postData).subscribe(function() {
+    //   console.log("done");
+    // })
+    localStorage.setItem(itemId.toString(), "0");
   }
 }
 

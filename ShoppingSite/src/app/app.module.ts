@@ -7,6 +7,9 @@ import { NavComponent } from './nav/nav.component';
 import { NavSideBarComponent } from './nav-side-bar/nav-side-bar.component';
 import { AllItemsComponent } from './all-items/all-items.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 
@@ -15,7 +18,10 @@ import { RouterModule, Routes } from '@angular/router';
     AppComponent,
     NavComponent,
     NavSideBarComponent,
-    AllItemsComponent
+    AllItemsComponent,
+    CheckoutComponent,
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

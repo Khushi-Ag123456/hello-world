@@ -1,0 +1,16 @@
+<div class = "col-6" >
+        <div class = "card p-4">
+            <h1>Order Summary</h1>
+            <p class = "border-bottom">You have this items in your cart.</p>
+            <div class = "row border-bottom" *ngFor = "let items of itemsArr" >
+            <div *ngIf = "items.quantity">
+                <p class = "col-9">{{items.quantity}} X  {{items.title}}</p>
+                <p class = "col-3 float-right">{{items.quantity * items.price}}</p>
+            </div>
+           
+
+        </div>
+        <div class = "row">
+                <p class = "font-weight-bold">Total</p>
+            </div>
+    </div>
